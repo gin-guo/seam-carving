@@ -3,12 +3,11 @@
 Seam Carving is a content-aware image resizing technique that uses both geometric constraints and image content for the reduction and 
 expansion of images. A _seam_ is defined as an optimal path of pixels on a single image from top to bottom, or left to right, 
 where optimally is defined by an image energy function. Unlike standard content-agnostic resizing techniques such as cropping and scaling,
-seam carving preserves the most significant features of the images (aspect ratio, set of objects present, etc.), and enhances the quality 
-of the results. An example of a resized 505-by-287 pixel image is shown below, with a comparison between the original images and the result 
-after removing 150 vertical seams, resulting in a 30% narrower image.
+seam carving preserves the most significant features of the images (aspect ratio, set of objects present, etc.) when shrunken or expanded, 
+and enhances the quality of the results. An example of a resized 505-by-287 pixel image is shown below, with a comparison between the original 
+images and the result after removing 150 vertical seams, resulting in a 30% narrower image.
 
 ![resized-image](https://user-images.githubusercontent.com/72530527/168497669-c6b0c279-cfd6-49d4-b1b2-ee2b7161a455.gif)
-
 
 This project uses the seam carving technique to create a data type that resizes a H-by-W image. This will be done by 1) computing the 
 dual-gradient energy function, then 2) finding the vertical "seams"such that the sum of the dual-gradient energy values in the pixels along 
@@ -136,4 +135,4 @@ Upon completing the functions in `seamcarving.c`, run the program repeatedly to 
     }
     destroy_image(im);
 ```
-_Credit_: the assignment was designed by Michael Guerzhoy.
+_Credit_: This assignment was designed by Michael Guerzhoy, coded by Ginny Guo
