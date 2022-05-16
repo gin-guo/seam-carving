@@ -13,6 +13,36 @@ This project uses the seam carving technique to create a data type that resizes 
 dual-gradient energy function, then 2) finding the vertical "seams"such that the sum of the dual-gradient energy values in the pixels along 
 the path is as small as possible. The file `seamcarving.c` was created that implements all the functions in `seamcarvng.h`.
 
+- **Notation:** 
+
+In image processing, pixel (y, x) refers to the pixel in column x and row y, with pixel (0, 0) at the upper-left corner and pixel (H-1, W-1) at the lower-right corner:
+
+<p align="center">
+<img width="149" alt="image" src="https://user-images.githubusercontent.com/72530527/168504282-255f5389-472a-410d-b897-d436dee55cd2.png">
+</p>
+
+- **Energy Calculation:** 
+
+The first step is calculating the energy of a pixel, which is a measure of its perceptual importance – the higher the energy, the less likely that the pixel is included as part of a seam. The dual-gradient energy function is used in the program to perform this, as shown by the image below.
+
+<p align="center">
+<img width="502" alt="image" src="https://user-images.githubusercontent.com/72530527/168504441-721be6e5-5d02-4fc8-8dfb-8237940cdfad.png">
+</p>
+
+The energy is high (white) for pixels where there is a rapid colour gradient (such as the boundary between the sea and sky and the boundary between the surfing figure and the ocean). The seam carving technique avoids removing such high-energy pixels.
+
+- **Seam Identification:** 
+
+The next step is finding a vertical seam of minimum total energy. The seam is a path through pixels from top to bottom such that the sum of the energies of the pixels is minimal. This minimum-energy seam is defined using dynamic programming.
+
+<p align="center">
+<img width="502" alt="image" src="https://user-images.githubusercontent.com/72530527/168504932-709b262d-957d-4593-aa26-7303fb31d252.png">
+</p>
+
+- **Seam Removal:** 
+
+The final step is removing all the pixels along the vertical seam from the image.
+
 
 ## Part 1: Dual-Gradient Energy Function
 
@@ -135,4 +165,4 @@ Upon completing the functions in `seamcarving.c`, run the program repeatedly to 
     }
     destroy_image(im);
 ```
-_Credit_: This assignment was designed by Michael Guerzhoy, coded by Ginny Guo
+_Credit_: This assignment was designed by Josh Hug, ported to C by Michael Guerzhoy, and coded by Ginny Guo
